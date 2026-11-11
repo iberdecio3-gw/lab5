@@ -2,7 +2,6 @@
 import sqlite3, pandas as pd
 import sys
 
-# Connect to database (same as Week 8 demo)
 con = sqlite3.connect(sys.argv[1])
 
 def q(sql):
