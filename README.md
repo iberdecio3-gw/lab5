@@ -33,6 +33,13 @@ Instructions:
    - `query_cohort` reads `cohort.db` and builds Lab 4 feature table
    - `merge_tables` merges counts by sex because they don't share ID. I kept this step after the assignment update
    - `report` uses the combined table to create the summary figure + text
+  
+   ```mermaid
+flowchart TD
+    A["Clean Lab 3 samples"] --> C["Merge counts by sex"]
+    B["Query Lab 4 cohort"] --> C
+    C --> D["Generate summary figure and text"]
+   ```
 
 2. Make each rule/process declare its real inputs and outputs — no step should silently depend on files not declared to the workflow engine.Prove it's re-runnable and scalable:
   - Each rule lists inputs/outputs.
