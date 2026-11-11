@@ -1,4 +1,4 @@
-Assuming unrestricted shared filesystem usage.
+
 
 SNAKEMAKE
 =========
