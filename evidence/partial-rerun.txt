@@ -1,0 +1,141 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-11-11 14:32:03
+  Workflow ID: 68c1cb88-7b86-41dc-bfbf-ea5f466f1a32
+  Platform: macOS-26.3-arm64-arm-64bit-Mach-O
+  Host: Mac.lan
+  User: isaberdecio
+  Snakemake version: 9.27.1
+  Python version: 3.14.6 | packaged by conda-forge | (main, Aug 11 2026, 10:24:52) [Clang 20.1.8 ]
+  Command: /Users/isaberdecio/lab5/.venv/bin/snakemake --cores 2
+  Snakefile: /Users/isaberdecio/lab5/Snakefile
+  Base directory: /Users/isaberdecio/lab5
+  Run directory: /Users/isaberdecio/lab5
+  Working directory: /Users/isaberdecio/lab5
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count
+-------------  -------
+clean_samples        1
+merge_tables         1
+report               1
+all                  1
+total                4
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Nov 11 14:32:05 2026]
+localrule clean_samples:
+    input: data/messy_samples.csv, clean_1.R
+    output: results/samples.csv
+    jobid: 2
+    reason: Updated input files: data/messy_samples.csv
+    resources: tmpdir=/var/folders/9n/d1_2j5wn3x3cs6fgc12hqk840000gn/T
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Warning messages:
+1: package ‘ggplot2’ was built under R version 4.5.2 
+2: package ‘tibble’ was built under R version 4.5.2 
+3: package ‘tidyr’ was built under R version 4.5.2 
+4: package ‘readr’ was built under R version 4.5.2 
+5: package ‘purrr’ was built under R version 4.5.2 
+6: package ‘dplyr’ was built under R version 4.5.2 
+7: package ‘lubridate’ was built under R version 4.5.2 
+Rows: 60 Columns: 8
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (8): sample_id, patient_name, dob, sex, enrollment_site, glucose_value, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+# A tibble: 10 × 9
+   sample_id patient_name dob   sex   enrollment_site glucose_value glucose_unit
+   <chr>     <chr>        <chr> <chr> <chr>                   <dbl> <chr>       
+ 1 S0001     A. Nguyen    1962… Male  Site B                  146.  mg/dL       
+ 2 S0002     T. Patel     1974… Male  Site C                  146.  mg/dL       
+ 3 S0003     R. Martinez  2053… Fema… Site B                   84.2 mg/dL       
+ 4 S0004     A. Patel     1957… Fema… Site B                  120   mg/dL       
+ 5 S0005     B. Martinez  1997… Male  Site B                  138.  mg/dL       
+ 6 S0006     R. Kim       2068… Fema… Site C                 2881.  mg/dL       
+ 7 S0007     T. Martinez  1969… Unkn… Site A                  206   mg/dL       
+ 8 S0008     K. Davis     1999… Fema… Site C                  229.  mg/dL       
+ 9 S0009     S. Davis     1995… Male  Site C                  185   mg/dL       
+10 S0010     A. Martinez  1951… Fema… Site C                  215.  mg/dL       
+# ℹ 2 more variables: notes <chr>, glucose_flag <lgl>
+[Wed Nov 11 14:32:06 2026]
+Finished jobid: 2 (Rule: clean_samples)
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Nov 11 14:32:07 2026]
+localrule merge_tables:
+    input: results/samples.csv, results/patient_features.tsv, merge_tables.R
+    output: results/combined.csv
+    jobid: 1
+    reason: Input files updated by another job: results/samples.csv
+    resources: tmpdir=/var/folders/9n/d1_2j5wn3x3cs6fgc12hqk840000gn/T
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Warning message:
+package ‘dplyr’ was built under R version 4.5.2 
+Warning message:
+package ‘readr’ was built under R version 4.5.2 
+[Wed Nov 11 14:32:07 2026]
+Finished jobid: 1 (Rule: merge_tables)
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Nov 11 14:32:07 2026]
+localrule report:
+    input: results/combined.csv, make_report.R
+    output: results/summary.png, results/summary.md
+    jobid: 4
+    reason: Input files updated by another job: results/combined.csv
+    resources: tmpdir=/var/folders/9n/d1_2j5wn3x3cs6fgc12hqk840000gn/T
+null device 
+          1 
+[Wed Nov 11 14:32:08 2026]
+Finished jobid: 4 (Rule: report)
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Nov 11 14:32:08 2026]
+localrule all:
+    input: results/combined.csv, results/summary.png, results/summary.md
+    jobid: 0
+    reason: Input files updated by another job: results/summary.png, results/combined.csv, results/summary.md
+    resources: tmpdir=/var/folders/9n/d1_2j5wn3x3cs6fgc12hqk840000gn/T
+[Wed Nov 11 14:32:08 2026]
+Finished jobid: 0 (Rule: all)
+4 of 4 steps (100%) done
+Complete log(s): /Users/isaberdecio/lab5/.snakemake/log/2026-11-11T143203.725034.snakemake.log
+Elapsed time: 0:00:04.453465
