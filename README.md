@@ -23,7 +23,7 @@ SQLite (sqlite3)
 
 Instructions:
 1. Clone repository (git clone)
-1a. If build_feautures.py or clean_1.R are missing, copy files from my previous repos [Lab 3](https://github.com/iberdecio3-gw/lab3) and [Lab 4](https://github.com/iberdecio3-gw/lab4)
+2. If build_feautures.py or clean_1.R are missing, copy files from my previous repos [Lab 3](https://github.com/iberdecio3-gw/lab3) and [Lab 4](https://github.com/iberdecio3-gw/lab4)
 
 
 ## Task Requirements
